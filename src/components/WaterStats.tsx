@@ -105,9 +105,8 @@ export default function WaterStats() {
       }
     }))
 
-    // Remove the unused 'prev' parameter
-    setHistoricalData([
-      ...historicalData.slice(1),
+    setHistoricalData(currentData => [
+      ...currentData.slice(1),
       {
         time: new Date().toLocaleTimeString(),
         ph: stats.ph.value,
