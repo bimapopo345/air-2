@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Fish } from 'lucide-react'
 
-// Updated navigation to only include sections that exist in the page
+// Updated navigation to include the new Water Stats section
 const navigation = [
   { name: 'Home', href: '#home' },
   { name: 'Features', href: '#features' },
   { name: 'Benefits', href: '#benefits' },
+  { name: 'Water Stats', href: '#water-stats' },
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'Contact', href: '#contact' },
