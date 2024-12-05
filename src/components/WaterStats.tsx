@@ -105,20 +105,21 @@ export default function WaterStats() {
       }
     }))
 
-    setHistoricalData(prev => {
-      const newData = [...prev.slice(1), {
+    // Remove the unused 'prev' parameter
+    setHistoricalData([
+      ...historicalData.slice(1),
+      {
         time: new Date().toLocaleTimeString(),
         ph: stats.ph.value,
         temperature: stats.temperature.value,
         oxygen: stats.oxygen.value,
         turbidity: stats.turbidity.value,
-      }]
-      return newData
-    })
+      }
+    ])
   }
 
   useEffect(() => {
-    let intervalId: NodeJS.Timer | null = null;
+    let intervalId: number | null = null;
 
     if (isUpdating) {
       const currentInterval = intervalOptions.find(opt => opt.value === updateInterval);
@@ -129,7 +130,7 @@ export default function WaterStats() {
         }
         
         // Set new interval with the correct timing
-        intervalId = setInterval(updateStats, currentInterval.ms);
+        intervalId = window.setInterval(updateStats, currentInterval.ms);
       }
     }
 
